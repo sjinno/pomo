@@ -4,7 +4,7 @@ use std::io::{self, Write};
 use std::thread;
 use std::time::Duration;
 
-fn main() {
+pub fn run() {
     let arg;
     match env::args().nth(1) {
         Some(num) => match num.trim().parse::<u64>() {

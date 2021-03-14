@@ -6,4 +6,3 @@ version = "0.1.0"
 
 [dependencies]
 rodio = "0.13.0"
-termion = "1.5.6"
