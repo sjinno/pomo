@@ -31,15 +31,14 @@ fn update_progress(duration: &u64) {
         if count % 300 == 0 && count != 0 {
             progress.push_str("| ");
         }
-        print!("\r");
-        print!("{}", progress);
+        print!("\r{}", progress);
         std::io::stdout().flush().unwrap();
 
         thread::sleep(Duration::from_secs(1));
         count += 1;
     }
     progress.push('●');
-    println!("{}", progress);
+    println!("\r{}", progress);
 }
 
 fn get_input() -> u64 {
@@ -52,7 +51,7 @@ fn get_input() -> u64 {
         Ok(num) => num * 60,
         Err(_) => get_input(),
     };
-    duration * 60
+    duration
 }
 
 fn begin_block(stream_handle: &OutputStreamHandle) {
