@@ -37,6 +37,9 @@ fn update_progress(duration: &u64) {
         thread::sleep(Duration::from_secs(1));
         count += 1;
     }
+    progress.push('●');
+    println!("\x1B[2J\x1B[1;1H");
+    println!("{}", progress);
 }
 
 fn get_input() -> u64 {
