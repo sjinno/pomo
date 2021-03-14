@@ -25,12 +25,13 @@ fn update_progress(duration: &u64) {
     let mut progress = String::new();
 
     while &count != duration {
-        println!("\x1B[2J\x1B[1;1H");
-        // println!("{}", count / 3);
-
         if count % 60 == 0 && count != 0 {
             progress.push_str("● ");
         }
+        if count % 300 == 0 && count != 0 {
+            progress.push_str("| ");
+        }
+        print!("\r");
         print!("{}", progress);
         std::io::stdout().flush().unwrap();
 
@@ -38,7 +39,6 @@ fn update_progress(duration: &u64) {
         count += 1;
     }
     progress.push('●');
-    println!("\x1B[2J\x1B[1;1H");
     println!("{}", progress);
 }
 
@@ -56,7 +56,6 @@ fn get_input() -> u64 {
 }
 
 fn begin_block(stream_handle: &OutputStreamHandle) {
-    println!("\x1B[2J\x1B[1;1H");
     thread::sleep(Duration::from_millis(500));
     println!("New block has begun.");
     let file = std::fs::File::open("audio/mario.wav").unwrap();
