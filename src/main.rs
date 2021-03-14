@@ -8,7 +8,7 @@ fn main() {
     let arg;
     match env::args().nth(1) {
         Some(num) => match num.trim().parse::<u64>() {
-            Ok(n) => arg = n * 1000,
+            Ok(n) => arg = n * 60,
             Err(_) => arg = get_input(),
         },
         None => arg = get_input(),
@@ -16,7 +16,7 @@ fn main() {
     println!("{}", arg);
     let (_stream, stream_handle) = rodio::OutputStream::try_default().unwrap();
     begin_block(&stream_handle);
-    thread::sleep(Duration::from_millis(arg));
+    thread::sleep(Duration::from_secs(arg));
     end_block(&stream_handle);
 }
 
@@ -27,7 +27,7 @@ fn get_input() -> u64 {
         .read_line(&mut duration)
         .expect("Failed to read line.");
     let duration = match duration.trim().parse::<u64>() {
-        Ok(num) => num * 1000,
+        Ok(num) => num * 60,
         Err(_) => get_input(),
     };
     duration
