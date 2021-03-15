@@ -5,7 +5,7 @@ use std::time::Duration;
 
 pub fn begin_block(stream_handle: &OutputStreamHandle, title: &str) {
     thread::sleep(Duration::from_millis(500));
-    println!("\n{} has begun.", title);
+    println!("{} has begun.", title);
     let file = std::fs::File::open("audio/mario.wav").unwrap();
     let mario = stream_handle.play_once(io::BufReader::new(file)).unwrap();
     mario.set_volume(0.3);
