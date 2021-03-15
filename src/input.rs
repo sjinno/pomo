@@ -5,16 +5,16 @@ pub fn get_inputs() -> (String, u64) {
 }
 
 fn get_title() -> String {
-    println!("What is the name of the task? (default: Task)");
+    println!("What is the name of the task? (default: TASK)");
     let mut title = String::new();
     io::stdin()
         .read_line(&mut title)
         .expect("Failed to read line.");
     let t = title.trim();
     if t.is_empty() {
-        "Task".to_string()
+        "TASK".to_string()
     } else {
-        t.to_string()
+        t.to_ascii_uppercase()
     }
 }
 
