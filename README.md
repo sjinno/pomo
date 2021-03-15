@@ -1,6 +1,20 @@
 # pomo
 
-Producticity CLI app that utlizes [pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+Producticity CLI app that utlizes [pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique). Still in WIP.
+
+
+### Usage
+
+```bash
+# 1. Clone
+git clone https://github.com/sjinno/pomo.git
+
+# 2. Build
+cargo build --examples
+
+# 3. Execute
+cargo run --example eg 
+```
 
 
 ### Todo:
