@@ -1,39 +1,7 @@
-use std::env;
 use std::io;
 
 pub fn get_inputs() -> (u64, String) {
-    let mut args = env::args().skip(1);
-    let mut ignore_second_arg = false;
-
-    let mins;
-    match args.next() {
-        Some(m) => match m.trim().parse::<u64>() {
-            Ok(num) => mins = num * 60,
-            Err(_) => {
-                ignore_second_arg = true;
-                mins = get_mins();
-            }
-        },
-        None => {
-            ignore_second_arg = true;
-            mins = get_mins();
-        }
-    }
-
-    let title;
-    if !ignore_second_arg {
-        match args.next() {
-            Some(s) => match s.is_empty() {
-                true => title = get_title(),
-                false => title = s,
-            },
-            None => title = get_title(),
-        }
-    } else {
-        title = get_title();
-    }
-
-    (mins, title)
+    (get_mins(), get_title())
 }
 
 fn get_mins() -> u64 {
