@@ -22,6 +22,7 @@ macro_rules! color {
 pub fn update_progress(duration: &u64) {
     let mut count = 1;
     let mut progress = String::new();
+    let one_min_passed = |s: String, c: &str| -> String { s.replace("● ● ● ● ● ", &c) };
     // Duration is in secs.
     // e.g. 1 min -> 60 secs
     while &count != duration {
@@ -29,11 +30,11 @@ pub fn update_progress(duration: &u64) {
             match count {
                 five_mins if five_mins % 300 == 0 => {
                     let color = color!(Green, "●", " | ");
-                    progress = progress.replace("● ● ● ● ● ", &color);
+                    progress = one_min_passed(progress, &color);
                 }
                 one_min if one_min % 60 == 0 => {
                     let color = color!(Green, "●", " ");
-                    progress = progress.replace("● ● ● ● ● ", &color);
+                    progress = one_min_passed(progress, &color);
                 }
                 ten_secs if ten_secs % 10 == 0 => progress.push_str("● "),
                 _ => (),
@@ -45,6 +46,6 @@ pub fn update_progress(duration: &u64) {
         count += 1;
     }
     let color = color!(Green, "●");
-    progress = progress.replace("● ● ● ● ● ", &color);
+    progress = one_min_passed(progress, &color);
     println!("\r{clr}{}", progress, clr = clear::CurrentLine);
 }
