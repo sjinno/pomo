@@ -28,6 +28,10 @@ pub fn update_progress(duration: &u64) {
     while &count != duration {
         if count != 0 {
             match count {
+                ten_mins if ten_mins % 600 == 0 => {
+                    let color = color!(Green, "●", " || ");
+                    progress = one_min_passed(progress, &color);
+                }
                 five_mins if five_mins % 300 == 0 => {
                     let color = color!(Green, "●", " | ");
                     progress = one_min_passed(progress, &color);
