@@ -1,4 +1,4 @@
-use std::io::Write;
+use std::io::{self, Write};
 use std::thread;
 use std::time::Duration;
 use termion::clear;
@@ -45,7 +45,7 @@ pub fn update_progress(duration: &u64) {
             }
         }
         print!("\r{clr}{}", progress, clr = clear::CurrentLine,);
-        std::io::stdout().flush().unwrap();
+        io::stdout().flush().unwrap();
         thread::sleep(Duration::from_secs(1));
         count += 1;
     }
