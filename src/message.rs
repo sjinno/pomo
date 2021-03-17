@@ -8,8 +8,8 @@ pub fn begin_block(stream_handle: &OutputStreamHandle, title: &str) {
     println!("{} has started.", title);
     let file = std::fs::File::open("audio/mario.wav").unwrap();
     let mario = stream_handle.play_once(io::BufReader::new(file)).unwrap();
-    mario.set_volume(0.3);
-    thread::sleep(Duration::from_millis(1500));
+    mario.set_volume(0.2);
+    thread::sleep(Duration::from_millis(2000));
 }
 
 pub fn end_block(stream_handle: &OutputStreamHandle, title: &str) {
