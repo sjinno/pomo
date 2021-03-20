@@ -11,7 +11,7 @@ fn do_the_thing() {
     let (num_of_repeats, recess_mins) = input::get_recess_inputs();
     let (_stream, stream_handle) = rodio::OutputStream::try_default().unwrap();
     let mut count = 0;
-    while count < num_of_repeats {
+    loop {
         message::begin_block(&stream_handle, &title);
         progress::update_progress(&mins);
         message::end_block(&stream_handle, &title);
