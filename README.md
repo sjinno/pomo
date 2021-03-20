@@ -8,11 +8,11 @@ Producticity CLI app that utlizes [pomodoro technique](https://en.wikipedia.org/
 # 1. Clone
 git clone https://github.com/sjinno/pomo.git
 
-# 2. Execute
-cargo run --bin onetime
+# 2. Build
+cargo build --example eg
 
-# OR if you want to repeat certain number of times:
-cargo run --bin repeat
+# 3. Execute
+cargo run --example eg
 ```
 
 ### Todo:

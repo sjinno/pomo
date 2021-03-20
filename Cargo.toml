@@ -5,6 +5,7 @@ name = "pomo"
 version = "0.1.0"
 
 [dependencies]
+chrono = "0.4.19"
 envy = "0.4.2"
 rodio = "0.13.0"
 serde = "1.0.124"

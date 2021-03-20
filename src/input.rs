@@ -1,5 +1,6 @@
 use std::io;
 
+// 1. Process `title` and `minutes` inputs.
 pub fn get_inputs() -> (String, u64) {
     (get_title(), get_mins())
 }
@@ -27,6 +28,36 @@ fn get_mins() -> u64 {
     let duration = match duration.trim().parse::<u64>() {
         Ok(num) => num * 60,
         Err(_) => get_mins(),
+    };
+    duration
+}
+
+// 2. Process `number of repeats` and `recess duration` inputs.
+pub fn get_recess_inputs() -> (usize, u64) {
+    (get_num_of_repeats(), get_recess_mins())
+}
+
+fn get_num_of_repeats() -> usize {
+    println!("How many times do you want to repeat?");
+    let mut num = String::new();
+    io::stdin()
+        .read_line(&mut num)
+        .expect("Failed to read line.");
+    match num.trim().parse::<usize>() {
+        Ok(num) => num,
+        Err(_) => get_num_of_repeats(),
+    }
+}
+
+fn get_recess_mins() -> u64 {
+    println!("How many minutes do you want to rest between sessions?");
+    let mut duration = String::new();
+    io::stdin()
+        .read_line(&mut duration)
+        .expect("Failed to read line.");
+    let duration = match duration.trim().parse::<u64>() {
+        Ok(num) => num * 60,
+        Err(_) => get_recess_mins(),
     };
     duration
 }
