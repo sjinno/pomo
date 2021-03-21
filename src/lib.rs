@@ -18,7 +18,7 @@ fn do_the_thing() {
         progress::update_progress(&mins);
         count += 1;
         let is_done = count == num_of_repeats;
-        message::end_block(&stream_handle, &title, &recess_mins, is_done);
+        message::end_block(&stream_handle, &title, is_done, recess_mins);
         if is_done {
             break;
         }

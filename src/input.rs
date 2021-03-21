@@ -33,10 +33,10 @@ fn get_mins() -> u64 {
 }
 
 // 2. Process `number of repeats` and `recess duration` inputs.
-pub fn get_recess_inputs() -> (usize, u64) {
+pub fn get_recess_inputs() -> (usize, Option<u64>) {
     match get_num_of_repeats() {
-        1 => (1, 0),
-        x => (x, get_recess_mins()),
+        1 => (1, None),
+        x => (x, Some(get_recess_mins())),
     }
 }
 

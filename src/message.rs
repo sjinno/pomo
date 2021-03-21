@@ -17,8 +17,8 @@ pub fn begin_block(stream_handle: &OutputStreamHandle, title: &str) {
 pub fn end_block(
     stream_handle: &OutputStreamHandle,
     title: &str,
-    recess_mins: &u64,
     is_done: bool,
+    recess_mins: Option<u64>,
 ) {
     println!("{} has ended. [{}]", title, bold!(stamp_time()));
     if is_done {
@@ -27,7 +27,7 @@ pub fn end_block(
     } else {
         println!("{}", color!(Yellow, "Do nothing and rest."));
         play_ending_bell(stream_handle);
-        thread::sleep(Duration::from_secs(*recess_mins - 12));
+        thread::sleep(Duration::from_secs(recess_mins.unwrap() - 12));
     }
 }
 
