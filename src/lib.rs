@@ -4,8 +4,6 @@ pub mod input;
 pub mod message;
 pub mod progress;
 
-use termion::color::Yellow;
-
 pub fn run() {
     do_the_thing();
 }
@@ -18,12 +16,11 @@ fn do_the_thing() {
     loop {
         message::begin_block(&stream_handle, &title);
         progress::update_progress(&mins);
-        message::end_block(&stream_handle, &title);
         count += 1;
-        if count == num_of_repeats {
-            println!("{}", bold!(color!(Yellow, "★★★ ALL DONE!! ★★★")));
+        let is_done = count == num_of_repeats;
+        message::end_block(&stream_handle, &title, &recess_mins, is_done);
+        if is_done {
             break;
         }
-        message::do_nothing(&recess_mins);
     }
 }
