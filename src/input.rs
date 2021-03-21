@@ -26,6 +26,7 @@ fn get_mins() -> u64 {
         .read_line(&mut duration)
         .expect("Failed to read line.");
     let duration = match duration.trim().parse::<u64>() {
+        Ok(num) if num == 0 => get_mins(),
         Ok(num) => num * 60,
         Err(_) => get_mins(),
     };
@@ -35,8 +36,8 @@ fn get_mins() -> u64 {
 // 2. Process `number of repeats` and `recess duration` inputs.
 pub fn get_recess_inputs() -> (usize, Option<u64>) {
     match get_num_of_repeats() {
-        1 => (1, None),
-        x => (x, Some(get_recess_mins())),
+        0 => (1, None),
+        x => (x + 1, Some(get_recess_mins())),
     }
 }
 
@@ -59,6 +60,7 @@ fn get_recess_mins() -> u64 {
         .read_line(&mut duration)
         .expect("Failed to read line.");
     let duration = match duration.trim().parse::<u64>() {
+        Ok(num) if num == 0 => get_recess_mins(),
         Ok(num) => num * 60,
         Err(_) => get_recess_mins(),
     };
