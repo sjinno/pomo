@@ -27,7 +27,7 @@ pub fn end_block(
     } else {
         println!("{}", color!(Yellow, "Do nothing and rest."));
         play_ending_bell(stream_handle);
-        thread::sleep(Duration::from_secs(recess_mins.unwrap() - 12));
+        thread::sleep(Duration::from_secs(recess_mins.unwrap() - 13));
     }
 }
 
@@ -42,7 +42,7 @@ fn play_ending_bell(stream_handle: &OutputStreamHandle) {
     let file = std::fs::File::open("audio/chime.ogg").unwrap();
     let chime = stream_handle.play_once(io::BufReader::new(file)).unwrap();
     chime.set_volume(0.3);
-    thread::sleep(Duration::from_secs(12));
+    thread::sleep(Duration::from_secs(13));
 }
 
 fn stamp_time() -> String {
