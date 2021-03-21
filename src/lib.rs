@@ -1,6 +1,10 @@
+mod macros;
+
 pub mod input;
 pub mod message;
 pub mod progress;
+
+use termion::color::Yellow;
 
 pub fn run() {
     do_the_thing();
@@ -17,7 +21,7 @@ fn do_the_thing() {
         message::end_block(&stream_handle, &title);
         count += 1;
         if count == num_of_repeats {
-            println!("DONE!! :D");
+            println!("{}", bold!(color!(Yellow, "★★★ ALL DONE!! ★★★")));
             break;
         }
         message::do_nothing(&recess_mins);
